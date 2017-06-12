@@ -14,7 +14,7 @@ export interface GizmoStore {
 
   readonly gizmos : {
     loading: boolean,
-    readonly items: Gizmo[];
+    readonly items: ReadonlyArray<Gizmo>;
   } 
 };
 

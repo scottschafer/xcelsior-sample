@@ -12,7 +12,7 @@ export class NewGizmoAction {
   constructor(gizmoStoreService : GizmoStoreService) {
     let model = gizmoStoreService.model;
     gizmoStoreService.modify(model.gizmos.items,
-      function(items:Gizmo[]) {
+      function(items:Array<Gizmo>) {
         items.push({name: "Untitled", sprockets: 0});
         return items;
       }
@@ -37,6 +37,10 @@ export class DeleteGizmoAction {
 
 export class ModifyPropertyAction {
   constructor(gizmoStoreService: GizmoStoreService, item: any, propertyName: string, value: any) {
+    if (item[propertyName] === value) {
+      // ignore if no change 
+      return;
+    }
     let model = gizmoStoreService.model;
     gizmoStoreService.modify(item,
       function(item) {
@@ -45,4 +49,4 @@ export class ModifyPropertyAction {
       }
     );
   }
-};
+}; 
