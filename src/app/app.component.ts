@@ -34,6 +34,7 @@ export class AppComponent {
 
   onChangeProperty(item: any, propertyName: string, value: any) {
     new ModifyPropertyAction(this.modelService, item, propertyName, value);
+    debugger;
     this.modelService.modify(item,
       function(item) {
         item[propertyName] = value;

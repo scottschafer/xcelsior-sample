@@ -1,5 +1,6 @@
 import { GizmoStore, GizmoStoreService } from '../model/gizmo-store';
 import { GizmoLoadService } from '../services/gizmo.service';
+import { Gizmo } from '../model/gizmo';
 
 export class LoadGizmoAction {
   constructor(gizmoLoadService: GizmoLoadService) {
@@ -11,7 +12,7 @@ export class NewGizmoAction {
   constructor(gizmoStoreService : GizmoStoreService) {
     let model = gizmoStoreService.model;
     gizmoStoreService.modify(model.gizmos.items,
-      function(items) {
+      function(items:Gizmo[]) {
         items.push({name: "Untitled", sprockets: 0});
         return items;
       }
